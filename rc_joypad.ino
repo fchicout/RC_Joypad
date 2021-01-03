@@ -1,3 +1,4 @@
+#include "physconf.h"
 #include "sdcard.h"
 #include "24conn.h"
 #include "mic.h"
@@ -6,21 +7,24 @@
 
 void setup(){
 	Serial.begin(115200);
-	Serial.println(F("--====Communications Log====--"));
+	
 	
 	printf_begin();
 
-	configureSDCard();
-	configureRadio();  
-	configureMic();
-	configureBuzzer();
+	configureDipSwitch();
+	// configureSDCard();
+	// configureRadio();  
+	// configureMic();
+	// configureBuzzer();
+	
 }
 
 
 void loop()
 {
+	Serial.println(isSaveLogOn());
 	// SetupSWimperialMarch();
 	// SetupGreenHill();
 	// PlayMusic();
-	readMic();
+	// readMic();
 }

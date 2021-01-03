@@ -17,6 +17,7 @@ void configureRadio(){
 		radio.openReadingPipe(1,addresses[1]);
 	}
 	radio.startListening();
+	Serial.println(F("--====Communications Log====--"));
   	radio.printDetails();
 }
 

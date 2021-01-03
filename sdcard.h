@@ -4,4 +4,5 @@
 #include <SD.h>
 #include <SPI.h>
 
+void diagSDCard();
 void configureSDCard();
