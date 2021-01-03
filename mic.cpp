@@ -3,11 +3,11 @@
 int micPin = A0;
 int micVal = 0;
 
-void configureMic(){
+void configureMic() {
 	pinMode(micPin, INPUT);
 }
 
-void readMic(){
+void readMic() {
 	micVal = analogRead(micPin);
   	Serial.println(micVal);
 }

@@ -1,7 +1,8 @@
 #include "sdcard.h"
 #include "24conn.h"
-#include "music.h"
 #include "mic.h"
+#include "music.h"
+
 
 void setup(){
 	Serial.begin(115200);
@@ -9,17 +10,17 @@ void setup(){
 	
 	printf_begin();
 
+	configureSDCard();
 	configureRadio();  
-	configureBuzzer();
 	configureMic();
-	configureSDCard()
+	configureBuzzer();
 }
 
 
 void loop()
 {
-	//SetupSWimperialMarch();
-	//SetupGreenHill();
-	//PlayMusic();
+	// SetupSWimperialMarch();
+	// SetupGreenHill();
+	// PlayMusic();
 	readMic();
 }

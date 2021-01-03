@@ -1,25 +1,9 @@
-#pragma once
-
 #include "music.h"
 
 int buzzerPin = 9;
 
 float seno;
 int frequencia;
-void configureBuzzer(){
-	pinMode(buzzerPin,OUTPUT);
-}
-
-void alarm(){
-	for(int x=0;x<180;x++){
-		//converte graus para radiando e depois obtém o valor do seno
-		seno=(sin(x*3.1416/180));
-		//gera uma frequência a partir do valor do seno
-		frequencia = 2000+(int(seno*1000));
-		tone(9,frequencia);
-		delay(2);
-	}
-}
 
 int tempo;
 int notes, wholenote, divider, noteDuration;
@@ -105,14 +89,30 @@ int melody[] = {
 
 };
 
-void SetupSWimperialMarch(){
+
+void configureBuzzer() {
+	pinMode(buzzerPin,OUTPUT);
+}
+
+void alarm() {
+	for(int x=0;x<180;x++){
+		//converte graus para radiando e depois obtém o valor do seno
+		seno=(sin(x*3.1416/180));
+		//gera uma frequência a partir do valor do seno
+		frequencia = 2000+(int(seno*1000));
+		tone(9,frequencia);
+		delay(2);
+	}
+}
+
+void SetupSWimperialMarch() {
 	tempo = 120;
 	notes = sizeof(melody) / sizeof(melody[0]) / 2;
 	wholenote = (60000 * 4) / tempo;
 	divider = 0, noteDuration = 0;
 }
 
-void PlayMusic(){
+void PlayMusic() {
 	for (int thisNote = 0; thisNote < notes * 2; thisNote = thisNote + 2) {
 
 		// calculates the duration of each note
@@ -137,7 +137,7 @@ void PlayMusic(){
 	}
 }
 
-void SetupGreenHill(){
+void SetupGreenHill() {
 	tempo = 140;
 
 	notes = sizeof(melody) / sizeof(melody[0]) / 2;

@@ -1,3 +1,7 @@
+#pragma once
+
+#include <Arduino.h>
+
 #define NOTE_B0  31
 #define NOTE_C1  33
 #define NOTE_CS1 35
@@ -93,5 +97,5 @@ void configureBuzzer();
 void alarm();
 
 void SetupSWimperialMarch();
-void SetupGreenHill()
+void SetupGreenHill();
 void PlayMusic();
