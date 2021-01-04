@@ -74,3 +74,13 @@ void configureSDCard(){
         return;
     }
 }
+
+void appendToLog(char* logName, char* data){
+    File logFile = SD.open(logName, FILE_WRITE);
+    if (logFile) {
+        logFile.print("[");logFile.print(millis());logFile.print("]");logFile.println(data);
+    } else {
+        Serial.print("error opening "); Serial.println(logName);
+    }
+    logFile.close();
+}

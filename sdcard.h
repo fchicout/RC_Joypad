@@ -6,3 +6,4 @@
 
 void diagSDCard();
 void configureSDCard();
+void appendToLog(char* logName, char* data);
