@@ -6,3 +6,5 @@
 
 void diagSDCard();
 void configureSDCard();
+
+void logMessage(int severity, char* file, char* messageData);
