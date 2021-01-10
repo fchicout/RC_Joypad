@@ -35,7 +35,7 @@ float getTemperature(){
 }
 
 float* getAccelVect(){
-  float accVect = float[3];
+  float accVect[3];
   loadMPUData();
   accVect[0] = AcX;
   accVect[1] = AcY;
@@ -44,7 +44,7 @@ float* getAccelVect(){
 }
 
 float* getGyroVect(){
-  float gyroVect = float[3];
+  float gyroVect[3];
   loadMPUData();
   gyroVect[0] = GyX;
   gyroVect[1] = GyY;
@@ -54,12 +54,12 @@ float* getGyroVect(){
 
 void logMPU(){
   char* MPUData;
-  strcat(MPUData, AcX); strcat(MPUData",");
-  strcat(MPUData, AcY); strcat(MPUData",");
-  strcat(MPUData, AcZ); strcat(MPUData",");
-  strcat(MPUData, Tmp); strcat(MPUData",");
-  strcat(MPUData, GyX); strcat(MPUData",");
-  strcat(MPUData, GyY); strcat(MPUData",");
+  strcat(MPUData, AcX); strcat(MPUData, ",");
+  strcat(MPUData, AcY); strcat(MPUData, ",");
+  strcat(MPUData, AcZ); strcat(MPUData, ",");
+  strcat(MPUData, Tmp); strcat(MPUData, ",");
+  strcat(MPUData, GyX); strcat(MPUData, ",");
+  strcat(MPUData, GyY); strcat(MPUData, ",");
   strcat(MPUData, GyZ);
   logMessage(0,"mpu.csv", MPUData);
 }
