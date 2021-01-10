@@ -34,7 +34,7 @@ float getTemperature(){
 	return (Tmp/340.00+36.53);
 }
 
-float[] getAccelVect(){
+float* getAccelVect(){
   float accVect = float[3];
   loadMPUData();
   accVect[0] = AcX;
@@ -43,7 +43,7 @@ float[] getAccelVect(){
 	return accVect;
 }
 
-float[] getGyroVect(){
+float* getGyroVect(){
   float gyroVect = float[3];
   loadMPUData();
   gyroVect[0] = GyX;

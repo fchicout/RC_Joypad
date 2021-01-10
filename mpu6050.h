@@ -8,7 +8,7 @@ void configureMPU6050();
 void loadMPUData();
 
 float getTemperature();
-float[] getAccelVect();
-float[] getGyroVect();
+float* getAccelVect();
+float* getGyroVect();
 
 void logMPU();

@@ -1,6 +1,7 @@
 #include "physconf.h"
 #include "sdcard.h"
 #include "24conn.h"
+#include "mpu6050.h"
 #include "mic.h"
 #include "music.h"
 
@@ -11,18 +12,19 @@ void setup(){
 	
 	printf_begin();
 
-	configureDipSwitch();
+	// configureDipSwitch();
 	// configureSDCard();
 	// configureRadio();  
 	// configureMic();
 	// configureBuzzer();
-	
+	configureMPU6050();
 }
 
 
 void loop()
 {
-	Serial.println(isSaveLogOn());
+	loadMPUData();
+
 	// SetupSWimperialMarch();
 	// SetupGreenHill();
 	// PlayMusic();
