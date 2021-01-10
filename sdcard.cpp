@@ -79,6 +79,12 @@ void logMessage(int severity, char* file, char* messageData){
     File dataFile = SD.open(file, FILE_WRITE);
     if (dataFile) {
         // TODO: update (here) it to get current date and time from RTC Clock on future
+        dataFile.print("[");
+        Serial.print("[");
+        dataFile.print(millis());
+        Serial.print(millis());
+        dataFile.print("]");
+        Serial.print("]");
         dataFile.println(messageData);
         Serial.println(messageData);
         dataFile.close();
