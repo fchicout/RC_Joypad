@@ -12,8 +12,8 @@ void setup(){
 	
 	printf_begin();
 
-	// configureDipSwitch();
-	// configureSDCard();
+	configureDipSwitch();
+	configureSDCard();
 	// configureRadio();  
 	// configureMic();
 	// configureBuzzer();
@@ -23,8 +23,8 @@ void setup(){
 
 void loop()
 {
-	loadMPUData();
-
+	//loadMPUData();
+	logMPU();
 	// SetupSWimperialMarch();
 	// SetupGreenHill();
 	// PlayMusic();

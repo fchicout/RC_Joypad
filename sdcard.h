@@ -3,6 +3,7 @@
 #include <Arduino.h>
 #include <SD.h>
 #include <SPI.h>
+#include "physconf.h"
 
 void diagSDCard();
 void configureSDCard();

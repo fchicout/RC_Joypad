@@ -26,7 +26,7 @@ void loadMPUData(){
   GyX=Wire.read()<<8|Wire.read();  //0x43 (GYRO_XOUT_H) & 0x44 (GYRO_XOUT_L)
   GyY=Wire.read()<<8|Wire.read();  //0x45 (GYRO_YOUT_H) & 0x46 (GYRO_YOUT_L)
   GyZ=Wire.read()<<8|Wire.read();  //0x47 (GYRO_ZOUT_H) & 0x48 (GYRO_ZOUT_L)
-  delay(10);
+  delay(20);
 }
 
 float getTemperature(){
@@ -53,13 +53,9 @@ float* getGyroVect(){
 }
 
 void logMPU(){
-  char* MPUData;
-  strcat(MPUData, AcX); strcat(MPUData, ",");
-  strcat(MPUData, AcY); strcat(MPUData, ",");
-  strcat(MPUData, AcZ); strcat(MPUData, ",");
-  strcat(MPUData, Tmp); strcat(MPUData, ",");
-  strcat(MPUData, GyX); strcat(MPUData, ",");
-  strcat(MPUData, GyY); strcat(MPUData, ",");
-  strcat(MPUData, GyZ);
+  char MPUData[40];
+  loadMPUData();
+  float temperature = (Tmp/340.00+36.53);
+  sprintf(MPUData, "%d, %d, %d, %f, %d, %d, %d", AcX, AcY, AcZ, temperature, GyX, GyY, GyZ);
   logMessage(0,"mpu.csv", MPUData);
 }
