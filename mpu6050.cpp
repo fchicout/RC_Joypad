@@ -54,8 +54,10 @@ float* getGyroVect(){
 
 void logMPU(){
   char MPUData[40];
+  char tempstring[10];
   loadMPUData();
   float temperature = (Tmp/340.00+36.53);
-  sprintf(MPUData, "%d, %d, %d, %f, %d, %d, %d", AcX, AcY, AcZ, temperature, GyX, GyY, GyZ);
+  dtostrf(temperature,3,2, tempstring);
+  sprintf(MPUData, "%d, %d, %d, %s, %d, %d, %d", AcX, AcY, AcZ, tempstring, GyX, GyY, GyZ);
   logMessage(0,"mpu.csv", MPUData);
 }
