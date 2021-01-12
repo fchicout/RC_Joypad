@@ -85,7 +85,9 @@ void logMessage(int severity, char* file, char* messageData){
             dataFile.print(millis());
             Serial.print(millis());
             dataFile.print("] ");
-            Serial.print("] ");
+            Serial.print("] - ");
+            Serial.print(file);
+            Serial.print(" - ");
             dataFile.println(messageData);
             Serial.println(messageData);
             dataFile.close();
