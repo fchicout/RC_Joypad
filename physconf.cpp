@@ -1,11 +1,14 @@
 #include "physconf.h"
 
-int pinSaveLog = 10;
-int pin1 = 11;
-int pin2 = 12;
-int pin3 = 13;
 
-int bin2int(int numvalues, ...)
+PhysConfig::PhysConfig() {
+    pinMode(dipPinSaveLog, INPUT_PULLUP);
+    pinMode(dipPin1, INPUT_PULLUP);
+    pinMode(dipPin2, INPUT_PULLUP);
+    pinMode(dipPin3, INPUT_PULLUP);
+}
+
+int PhysConfig::bin2int(int numvalues, ...)
 {
     int total = 0;
     va_list values;
@@ -20,7 +23,7 @@ int bin2int(int numvalues, ...)
  
 }
  
-int powint(int base, int exponent)
+int PhysConfig::powint(int base, int exponent)
 {
     int result = 1;
     for(;exponent > 0; exponent--)
@@ -28,13 +31,23 @@ int powint(int base, int exponent)
     return result;
 }
 
-void configureDipSwitch() {
-  pinMode(pinSaveLog, INPUT_PULLUP);
-  pinMode(pin1, INPUT_PULLUP);
-  pinMode(pin2, INPUT_PULLUP);
-  pinMode(pin3, INPUT_PULLUP);
+bool PhysConfig::isSaveLogOn(){
+    return bin2int(1, dipPinSaveLog);
 }
 
-bool isSaveLogOn(){
-    return bin2int(1, pinSaveLog);
+bool PhysConfig::isLowEnergyOn(){
+    return digitalRead(pinLowEnergy);
+}
+
+void PhysConfig::startLowEnergyMode(){
+    attachInterrupt(digitalPinToInterrupt(pinLowEnergy), PhysConfig::stopLowEnergyMode, LOW);
+    set_sleep_mode(SLEEP_MODE_PWR_DOWN);
+    sleep_enable();
+    delay(500);
+    sleep_cpu();
+}
+
+void PhysConfig::stopLowEnergyMode(){
+    sleep_disable();
+    detachInterrupt(digitalPinToInterrupt(pinLowEnergy));
 }

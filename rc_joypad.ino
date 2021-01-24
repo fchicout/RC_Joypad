@@ -4,27 +4,29 @@
 #include "mpu6050.h"
 #include "mic.h"
 #include "music.h"
+#include "joypad.h"
 
+PhysConfig pc;
 
 void setup(){
 	Serial.begin(115200);
 	
 	
 	printf_begin();
-
-	configureDipSwitch();
+	
 	configureSDCard();
 	// configureRadio();  
 	// configureMic();
 	// configureBuzzer();
 	configureMPU6050();
+	configureJoyPads();
 }
 
 
 void loop()
 {
-	//loadMPUData();
-	logMPU();
+	// loadMPUData();
+	// logMPU();
 	// SetupSWimperialMarch();
 	// SetupGreenHill();
 	// PlayMusic();

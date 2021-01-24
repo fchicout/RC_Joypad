@@ -3,9 +3,7 @@
 int sdPin = 53;
 
 Sd2Card card;
-
 SdVolume volume;
-
 SdFile root;
 
 void diagSDCard(){
@@ -76,7 +74,8 @@ void configureSDCard(){
 }
 
 void logMessage(int severity, char* file, char* messageData){
-    if (isSaveLogOn()) {
+    PhysConfig pc;
+    if (pc.isSaveLogOn()) {
         File dataFile = SD.open(file, FILE_WRITE);
         if (dataFile) {
             // TODO: update (here) it to get current date and time from RTC Clock on future
