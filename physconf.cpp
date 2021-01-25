@@ -40,7 +40,7 @@ bool PhysConfig::isLowEnergyOn(){
 }
 
 void PhysConfig::startLowEnergyMode(){
-    attachInterrupt(digitalPinToInterrupt(pinLowEnergy), PhysConfig::stopLowEnergyMode, LOW);
+    attachInterrupt(digitalPinToInterrupt(pinLowEnergy), stopLowEnergyMode, LOW);
     set_sleep_mode(SLEEP_MODE_PWR_DOWN);
     sleep_enable();
     delay(500);

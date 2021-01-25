@@ -9,13 +9,13 @@ private:
     int dipPin1 = 11;
     int dipPin2 = 12;
     int dipPin3 = 13;
-    int pinLowEnergy = 14;
+    static const int pinLowEnergy = 14;
     int bin2int(int numvalues, ...);
     int powint(int base, int exponent);
 public:
     PhysConfig();
     bool isSaveLogOn();
     bool isLowEnergyOn();
-    static void startLowEnergyMode();
+    void startLowEnergyMode();
     static void stopLowEnergyMode();
 };
