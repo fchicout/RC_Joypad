@@ -1,5 +1,12 @@
 #pragma once
 
 #include <Arduino.h>
-void configureMic();
-void readMic();
+
+class Mic{
+    private:
+        int micPin = A0;
+        int micVal = 0;
+    public:
+        Mic();
+        void readMic();
+};

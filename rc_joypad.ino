@@ -4,7 +4,6 @@
 #include "mpu6050.h"
 #include "mic.h"
 #include "music.h"
-#include "joypad.h"
 
 
 void setup(){
