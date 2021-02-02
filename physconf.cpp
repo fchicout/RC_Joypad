@@ -6,6 +6,11 @@ PhysConfig::PhysConfig() {
     pinMode(dipPin1, INPUT_PULLUP);
     pinMode(dipPin2, INPUT_PULLUP);
     pinMode(dipPin3, INPUT_PULLUP);
+
+    pinMode(throttlePin, INPUT);
+    pinMode(yawPin, INPUT);
+    pinMode(pitchPin, INPUT);
+    pinMode(rollPin, INPUT);
 }
 
 int PhysConfig::bin2int(int numvalues, ...)
@@ -50,4 +55,20 @@ void PhysConfig::startLowEnergyMode(){
 void PhysConfig::stopLowEnergyMode(){
     sleep_disable();
     detachInterrupt(digitalPinToInterrupt(pinLowEnergy));
+}
+
+int PhysConfig::throttle(){
+    return map(analogRead(throttlePin), 0, 1023, 0, 255);
+}
+
+int PhysConfig::yaw(){
+    return map(analogRead(yawPin), 0, 1023, 0, 255);
+}
+
+int PhysConfig::pitch(){
+    return map(analogRead(pitchPin), 0, 1023, 0, 255);
+}
+
+int PhysConfig::roll(){
+    return map(analogRead(rollPin), 0, 1023, 0, 255);
 }

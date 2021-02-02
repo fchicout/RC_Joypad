@@ -6,9 +6,9 @@
 #include "music.h"
 #include "joypad.h"
 
-PhysConfig pc;
 
 void setup(){
+	PhysConfig pc;
 	Serial.begin(115200);
 	
 	
@@ -19,7 +19,6 @@ void setup(){
 	// configureMic();
 	// configureBuzzer();
 	configureMPU6050();
-	configureJoyPads();
 }
 
 
